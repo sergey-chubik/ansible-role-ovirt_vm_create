@@ -1,0 +1,8 @@
+---
+
+- name: Logout from oVirt
+  ovirt_auth:
+    state: absent
+    ovirt_auth: "{{ ovirt_auth }}"
+  tags:
+    - always

@@ -1,0 +1,10 @@
+---
+
+- name: Login to oVirt
+  ovirt_auth:
+    hostname: "{{ ovirt_url }}"
+    username: "{{ ovirt_user }}"
+    password: "{{ ovirt_password }}"
+    ca_file: "{{ ovirt_cafile }}"
+  tags:
+    - always

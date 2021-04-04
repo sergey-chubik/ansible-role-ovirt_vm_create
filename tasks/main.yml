@@ -1,2 +1,33 @@
 ---
-# tasks file for ovirt_vm_create
+
+- name: ovirt_vm_create | Create and run VM
+  ovirt_vm:
+    auth:
+      hostname: "{{ ovirt_auth_url }}"
+      username: "{{ ovirt_auth_user }}"
+      password: "{{ ovirt_auth_password }}"
+      ca_file: "{{ ovirt_auth_cafile }}"
+    name: "{{ ovirt_vm_name }}"
+    description: "VM {{ ovirt_vm_name }} deploymen with Ansible"
+    template: "{{ ovirt_template }}"
+    cluster: "{{ ovirt_cluster }}"
+    cpu_sockets: "{{ ovirt_vm_cpu_sockets }}"
+    cpu_cores: "{{ ovirt_vm_cpu_cores }}"
+    cpu_threads: "{{ ovirt_vm_cpu_threads }}"
+    memory: "{{ ovirt_vm_memory }}"
+    memory_guaranteed: "{{ ovirt_vm_memory_guaranteed }}"
+    cloud_init:
+      host_name: "{{ ovirt_vm }}.{{ ovirt_vm_domain }}"
+      dns_servers: "{{ ovirt_vm_dns }}"
+      dns_search: "{{ ovirt_vm_domain }}"
+      nic_name: "{{ ovirt_vm_nic }}"
+      nic_boot_protocol: static
+      nic_ip_address: "{{ ovirt_vm_ip }}"
+      nic_netmask: "{{ ovirt_vm_nic_netmask }}"
+      nic_gateway: "{{ ovirt_vm_nic_gateway }}"
+      nic_on_boot: true
+    state: running
+
+- name: Sleep for 5 seconds
+  wait_for:
+    timeout: 5
