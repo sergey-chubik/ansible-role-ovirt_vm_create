@@ -1,6 +1,6 @@
 ---
 
-- name: ovirt_vm_create | Create and run VM
+- name: ovirt_vm_create | Create and run VM oVirt
   ovirt_vm:
     auth:
       hostname: "{{ ovirt_auth_url }}"
@@ -17,7 +17,7 @@
     memory: "{{ ovirt_vm_memory }}"
     memory_guaranteed: "{{ ovirt_vm_memory_guaranteed }}"
     cloud_init:
-      host_name: "{{ ovirt_vm }}.{{ ovirt_vm_domain }}"
+      host_name: "{{ ovirt_vm_name }}.{{ ovirt_vm_domain }}"
       dns_servers: "{{ ovirt_vm_dns }}"
       dns_search: "{{ ovirt_vm_domain }}"
       nic_name: "{{ ovirt_vm_nic }}"
@@ -28,6 +28,6 @@
       nic_on_boot: true
     state: running
 
-- name: Sleep for 5 seconds
+- name: ovirt_vm_create | Sleep for 5 seconds
   wait_for:
     timeout: 5
