@@ -28,6 +28,9 @@
       nic_on_boot: true
     state: running
 
-- name: ovirt_vm_create | Sleep for 5 seconds
+- name: ovirt_vm_create | Wait for connection
   wait_for:
-    timeout: 5
+    port: 22
+    host: "{{ ovirt_vm_ip }}"
+    delay: 5
+    timeout: 60

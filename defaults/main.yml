@@ -5,7 +5,6 @@ ovirt_auth_url: ovirt.ekaterinburg.fsin.uis
 ovirt_auth_user:
 ovirt_auth_password:
 ovirt_auth_cafile: "{{ role_path }}/files/ovirt.ekaterinburg.fsin.uis.pem"
-
 # Default variables for creating VM
 ovirt_vm_name: test
 ovirt_template: Centos7
@@ -16,7 +15,7 @@ ovirt_vm_cpu_threads: 1
 ovirt_vm_memory: 2GiB
 ovirt_vm_memory_guaranteed: 2GiB
 ovirt_vm_domain: ekaterinburg.fsin.uis
-ovirt_vm_dns: 10.66.198.150 10.66.8.40
+ovirt_vm_dns: "10.66.198.150 10.66.8.40"
 ovirt_vm_nic: eth0
 ovirt_vm_ip: 10.66.198.179
 ovirt_vm_nic_netmask: 255.255.255.192
