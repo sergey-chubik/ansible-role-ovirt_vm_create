@@ -1,6 +1,7 @@
 ---
 
 - name: ovirt_vm_create | Create and run VM oVirt
+  connection: local
   ovirt_vm:
     auth:
       hostname: "{{ ovirt_auth_url }}"
@@ -29,6 +30,7 @@
     state: running
 
 - name: ovirt_vm_create | Wait for connection
+  connection: local
   wait_for:
     port: 22
     host: "{{ ovirt_vm_ip }}"
